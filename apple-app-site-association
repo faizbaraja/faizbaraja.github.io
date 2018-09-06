@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+    {
+      "appID": "54SVVWQV48.id.co.giftcard.app.holdr.staging",
+      "paths": ["*"]
+    }
+    ]
+  }
+}
