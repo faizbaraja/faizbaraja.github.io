@@ -5,7 +5,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Template PWA">
-    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+    <!--<link rel="apple-touch-icon" href="images/icons/icon-152x152.png">-->
     <!-- Windows -->
     <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
     <meta name="msapplication-TileColor" content="#2F3BA2">
@@ -26,6 +26,14 @@
         }
         return urlparameter;
     }
+        
+    function setAppIcon(appIcon){
+        var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+        //link.type = 'image/x-icon';
+        link.rel = 'apple-touch-icon';
+        link.href = appIcon;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
 
     window.onload = function() {
         //<!-- Deep link URL for existing users with app already installed on their device -->
@@ -42,6 +50,7 @@
         var cardName = getUrlParam('cardName','Empty');
         
         document.getElementsByTagName("META")[2].content = unescape(cardName);
+        setAppIcon(iconURL)
         alert ("card number "+cardNumber)
     }
     </script>
