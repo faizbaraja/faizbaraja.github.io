@@ -41,7 +41,7 @@
         var iconURL = getUrlParam('cardIcon','Empty');
         var cardName = getUrlParam('cardName','Empty');
         
-        document.getElementsByTagName("META")[2].content = cardName;
+        document.getElementsByTagName("META")[2].content = unescape(cardName);
         alert ("card number "+cardNumber)
     }
     </script>
