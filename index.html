@@ -40,6 +40,8 @@
         var walletID = getUrlParam('walletID','Empty');
         var iconURL = getUrlParam('cardIcon','Empty');
         var cardName = getUrlParam('cardName','Empty');
+        
+        document.getElementsByTagName("META")[2].content = cardName;
         alert ("card number "+cardNumber)
     }
     </script>
