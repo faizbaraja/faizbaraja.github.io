@@ -48,10 +48,12 @@
         var walletID = getUrlParam('walletID','Empty');
         var iconURL = getUrlParam('cardIcon','Empty');
         var cardName = getUrlParam('cardName','Empty');
-        
+        var deepLinkURL = 'tadadeeplinkstaging://app.tada.id/card/'+cardNumber+'/'+walletID
         document.getElementsByTagName("META")[2].content = unescape(cardName);
         setAppIcon(iconURL)
-        alert ("card number "+cardNumber)
+        
+        window.location = deepLinkURL
+        //alert ("card number "+cardNumber)
     }
     </script>
 
