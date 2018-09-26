@@ -56,7 +56,7 @@
         document.getElementsByTagName("META")[2].content = unescape(cardName);
         setAppIcon(iconURL);
 
-        if (window.navigator.standalone) {
+        if (!window.navigator.standalone) {
             alert ("card number "+cardNumber);
             /* This code will be executed if app is running standalone */
             //window.location = deepLinkURL
