@@ -57,12 +57,14 @@
         setAppIcon(iconURL)
 
         if (isRunningStandalone()) {
+            alert ("card number "+cardNumber);
             /* This code will be executed if app is running standalone */
             window.location = deepLinkURL
         }
+        else{
+            alert ("in safari mode");
+        }
 
-
-        //alert ("card number "+cardNumber)
     }
     </script>
 
