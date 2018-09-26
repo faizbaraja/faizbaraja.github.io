@@ -54,12 +54,12 @@
         var cardName = getUrlParam('cardName','Empty');
         var deepLinkURL = 'tadadeeplinkstaging://app.tada.id/card/'+cardNumber+'/'+walletID
         document.getElementsByTagName("META")[2].content = unescape(cardName);
-        setAppIcon(iconURL)
+        setAppIcon(iconURL);
 
         if (isRunningStandalone()) {
             alert ("card number "+cardNumber);
             /* This code will be executed if app is running standalone */
-            window.location = deepLinkURL
+            //window.location = deepLinkURL
         }
         else{
             alert ("in safari mode");
