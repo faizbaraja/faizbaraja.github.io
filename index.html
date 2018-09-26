@@ -52,8 +52,15 @@
         document.getElementsByTagName("META")[2].content = unescape(cardName);
         setAppIcon(iconURL)
         
-        window.location = deepLinkURL
+        //window.location = deepLinkURL
         //alert ("card number "+cardNumber)
+        var headerNames = context.getVariable('request.headers.names');
+        var headerCount = context.getVariable('request.headers.count');
+        //Most important : request.headers.names give a Java Set object so convert it to string array.
+        headerNames = headerNames.toArray();
+        for (var i = 0; i < headerNames.length; i++) {
+            alert(headerNames[i] + ":" + context.getVariable('request.header.'+headerNames[i].toLowerCase()));    
+        }
     }
     </script>
 
