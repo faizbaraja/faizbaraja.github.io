@@ -34,6 +34,10 @@
         link.href = appIcon;
         document.getElementsByTagName('head')[0].appendChild(link);
     }
+        
+    function isRunningStandalone() {
+        return (window.matchMedia('(display-mode: standalone)').matches);
+    }
 
     window.onload = function() {
         //<!-- Deep link URL for existing users with app already installed on their device -->
@@ -51,16 +55,14 @@
         var deepLinkURL = 'tadadeeplinkstaging://app.tada.id/card/'+cardNumber+'/'+walletID
         document.getElementsByTagName("META")[2].content = unescape(cardName);
         setAppIcon(iconURL)
-        
-        //window.location = deepLinkURL
-        //alert ("card number "+cardNumber)
-        var headerNames = context.getVariable('request.headers.names');
-        var headerCount = context.getVariable('request.headers.count');
-        //Most important : request.headers.names give a Java Set object so convert it to string array.
-        headerNames = headerNames.toArray();
-        for (var i = 0; i < headerNames.length; i++) {
-            alert(headerNames[i] + ":" + context.getVariable('request.header.'+headerNames[i].toLowerCase()));    
+
+        if (isRunningStandalone()) {
+            /* This code will be executed if app is running standalone */
+            window.location = deepLinkURL
         }
+
+
+        //alert ("card number "+cardNumber)
     }
     </script>
 
