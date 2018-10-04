@@ -1,78 +1,202 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <!-- Add to home screen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Template PWA">
-    <link rel="apple-touch-startup-image" href="SplashScreen.png">
-    <!-- Windows -->
-    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#2F3BA2">
-    <script>
-     
+  <link rel="stylesheet" href="https://membership.usetada.com/bootstrap/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+  <!-- Add to home screen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Template PWA">
+  <link rel="apple-touch-startup-image" href="SplashScreen.png">
+  <!-- Windows -->
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+  <style>
+    body {
+      padding: 0rem 0 1.6rem;
+      overflow-x: hidden;
+      flex: 1;
+      max-width: 48rem;
+      margin: 0 auto;
+      background-color: #2F343A;
+    }
+
+    .itemName {
+      margin-top: 100px;
+      font-size: 60px;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 100;
+    }
+
+    .item .blur {
+      width: 80%;
+      padding-top: 100px;
+      margin-bottom: 80px;
+    }
+
+    .item .line {
+      width: 4%;
+      margin: 45px;
+      margin-top: 60px;
+      margin-bottom: 45px;
+      margin-left: 45px;
+      margin-right: 45px;
+    }
+
+
+
+    .numberCircle {
+      width: 120px;
+      line-height: 120px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 32px;
+      border: 2px solid #ffffff;
+      background-color: #ffffff;
+      font-size: 50pt;
+      color: black;
+    }
+
+    .container {
+      z-index: 1;
+      color: white;
+    }
+
+    .oneCircle {
+      margin-top: 50px;
+    }
+
+    .textBtn {
+      float: inherit;
+      margin-top: -120px;
+      margin-left: 200px;
+    }
+
+    .startHere {
+      margin-top: 180px;
+      margin-left: 250px;
+    }
+
+    .clearfix {
+      overflow: auto;
+    }
+
+
+    #cardIcon {
+      width: 150px;
+      height: 150px;
+      border-radius: 30px;
+      width: 145px;
+      height: 150px;
+      z-index: -1;
+      top: 120px;
+      left: 71%;
+      position: absolute;
+    }
+
+    #appLink {
+      text-decoration: none;
+    }
+  </style>
+  <script>
     function getUrlVars() {
-        var vars = {};
-        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-            vars[key] = value;
-        });
-        return vars;
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+      });
+      return vars;
     }
-        
-    function getUrlParam(parameter, defaultvalue){
-        var urlparameter = defaultvalue;
-        if(window.location.href.indexOf(parameter) > -1){
-            urlparameter = getUrlVars()[parameter];
-        }
-        return urlparameter;
+
+    function getUrlParam(parameter, defaultvalue) {
+      var urlparameter = defaultvalue;
+      if (window.location.href.indexOf(parameter) > -1) {
+        urlparameter = getUrlVars()[parameter];
+      }
+      return urlparameter;
     }
-        
-    function setAppIcon(appIcon){
-        var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-        //link.type = 'image/x-icon';
-        link.rel = 'apple-touch-icon';
-        link.href = appIcon;
-        document.getElementsByTagName('head')[0].appendChild(link);
+
+    function setAppIcon(appIcon) {
+      var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+      link.rel = 'apple-touch-icon';
+      link.href = appIcon;
+      document.getElementsByTagName('head')[0].appendChild(link);
     }
-        
+
     function isRunningStandalone() {
-        return (window.matchMedia('(display-mode: standalone)').matches);
+      return (window.matchMedia('(display-mode: standalone)').matches);
     }
 
-    window.onload = function() {
-        //<!-- Deep link URL for existing users with app already installed on their device -->
-        //window.location = 'tadadeeplinkstaging://app.tada.id/perks/153';        
-        //window.location = 'tadadeeplinkstaging://app.tada.id/transaction/147980';        
-        //window.location = 'tadadeeplinkstaging://app.tada.id/card/1543891146055888/2254';        
-        //window.location = 'tadadeeplinkstaging://app.tada.id/egift/5545/02913200';        
-        //window.location = 'tadadeeplinkstaging://app.tada.id';        
-        //window.location = 'tadadeeplinkstaging://app.tada.id/';
-        //window.location = 'tadadeeplinkstaging://faizbaraja.github.io/arduino.html';
-        var cardNumber = getUrlParam('cardNumber','Empty');
-        var walletID = getUrlParam('walletID','Empty');
-        var iconURL = getUrlParam('cardIcon','Empty');
-        var cardName = getUrlParam('cardName','Empty');
-        var deepLinkURL = 'tadadeeplinkstaging://app.tada.id/card/'+cardNumber+'/'+walletID
-        document.getElementsByTagName("META")[2].content = unescape(cardName);
-        setAppIcon(iconURL);
+    window.onload = function () {
+      var cardNumber = getUrlParam('cardNumber', 'Empty');
+      var walletID = getUrlParam('walletID', 'Empty');
+      var iconURL = getUrlParam('cardIcon', 'Empty');
+      var cardName = getUrlParam('cardName', 'Empty');
+      var deepLinkURL = 'tadadeeplinkstaging://app.tada.id/card/' + cardNumber + '/' + walletID
+      document.getElementsByTagName("META")[2].content = unescape(cardName);
+      setAppIcon(iconURL);
 
-        if (!window.navigator.standalone) {
-//             alert ("card numbers "+cardNumber);
-            /* This code will be executed if app is running standalone */
-            //window.location = deepLinkURL
-        }
-        else{
-//             alert ("in safari mode 1");
-            window.location = deepLinkURL
-        }
+      document.getElementById('cardIcon').src = iconURL;
+      document.getElementById('cardName').innerHTML = unescape(cardName);
+      document.getElementById('brand').innerHTML = unescape(cardName);
+      document.getElementById('appLink').href = deepLinkURL;
 
+      if (window.navigator.standalone) {
+        window.location = deepLinkURL;
+      }
     }
-    </script>
-
+  </script>
 </head>
 
-<body bgcolor="#4193f1">
-    
+<body>
+  <div class="container">
+    <div class="item">
+      <img class="blur" src="assets/icon-blur.png" alt="" srcset="">
+      <a href="" id="appLink">
+        <img src="assets/icon-share@2x.png" alt="" id="cardIcon">
+        <p id="cardName" class="text-center" style="color:white;margin-top:-125px;margin-left:565px;font-size: 25px;"></p>
+      </a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="itemName">
+      <p class="text-center">Add <b id="brand"></b> to your</p>
+      <p class="text-center">Homescreen</span>
+    </div>
+    <div class="item">
+      <div class="numberCircle oneCircle">
+        1
+      </div>
+    </div>
+
+    <div class="item textBtn">
+      <span style="font-size:50px;"><b>Share Button</b></span> <img src="assets/icon-share@2x.png" style="width:17%;margin-left: 20px; margin-top: -40px;"
+        alt="share" srcset=""> <br>
+      <span style="font-size:30px;">Tap "Share Button" from your browser</span>
+    </div>
+    <div class="item">
+      <img class="line" src="assets/line@2x.png" alt="" srcset="">
+    </div>
+    <div class="item">
+      <div class="numberCircle">
+        2
+      </div>
+    </div>
+    <div class="item textBtn">
+      <span style="font-size:50px;"><b>Add to Button</b></span><img src="assets/icon-add@2x.png" style="width:14%;margin-left:20px; margin-top: -40px;"
+        alt="" srcset="">
+      <br>
+      <span style="font-size:30px;">Tap "Add to Home Screen" button from the menu alert that appears</span>
+    </div>
+
+    <div class="item startHere">
+      <span style="font-size:40px">Start Here !</span>
+      <br>
+      <img src="assets/icon-arrow-down@2x.png" style="margin-left: 60px; margin-top: 20px; width: 15%;" alt="" srcset="">
+    </div>
+  </div>
+
+
 </body>
 
 </html>
