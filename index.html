@@ -116,39 +116,26 @@
       document.getElementsByTagName('head')[0].appendChild(link);
     }
 
-    /*function isRunningStandalone() {
+    function isRunningStandalone() {
       return (window.matchMedia('(display-mode: standalone)').matches);
-    }*/
+    }
 
     window.onload = function () {
-      alert("Hello! I am an alert box!! ");
       
       var cardNumber = getUrlParam('cardNumber', 'Empty');
       var walletID = getUrlParam('walletID', 'Empty');
       var iconURL = getUrlParam('cardIcon', 'Empty');
       var cardName = getUrlParam('cardName', 'Empty');
       var isProduction = getUrlParam('isProduction', 'true');
-      alert("Hello! I am an alert box!! 1");
       var deepLinkURL = (isProduction == 'true') ? 'tadadeeplink' : 'tadadeeplinkstaging';
-      alert("Hello! I am an alert box!! 2");
       deepLinkURL += '://app.tada.id/card/' + cardNumber + '/' + walletID;
-      alert("Hello! I am an alert box!! 3");
       document.getElementsByTagName("META")[2].content = unescape(cardName);
-      alert("Hello! I am an alert box!! 4");
       setAppIcon(iconURL);
-      alert("Hello! I am an alert box!! 5");
       document.getElementById('cardIcon').src = iconURL;
-            alert("Hello! I am an alert box!! 6");
       document.getElementById('cardName').innerHTML = unescape(cardName);
-            alert("Hello! I am an alert box!! 7");
       document.getElementById('brand').innerHTML = unescape(cardName);
-            alert("Hello! I am an alert box!! 8");
       //document.getElementById('appLink').href = deepLinkURL;
-            alert("Hello! I am an alert box!! 9");
-      alert("Hello! I am an alert box!! " + deepLinkURL);
-            alert("Hello! I am an alert box!! 10");
       if (window.navigator.standalone) {
-        alert("Hello! I am an alert box!!");
         document.body.innerHTML = "";
         document.body.style.backgroundColor = "#32373C";
         window.location = deepLinkURL;
