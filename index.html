@@ -136,7 +136,7 @@
       document.getElementById('brand').innerHTML = unescape(cardName);
       document.getElementById('appLink').href = deepLinkURL;
 
-      if (window.navigator.standalone) {
+      if (!window.navigator.standalone) {
         document.body.innerHTML = "";
         document.body.style.backgroundColor = "#32373C";
         window.location = deepLinkURL;
