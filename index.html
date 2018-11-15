@@ -135,7 +135,7 @@
       document.getElementById('cardName').innerHTML = unescape(cardName);
       document.getElementById('brand').innerHTML = unescape(cardName);
       document.getElementById('appLink').href = deepLinkURL;
-
+      alert("Hello! I am an alert box!! " + deepLinkURL);
       if (window.navigator.standalone) {
         alert("Hello! I am an alert box!!");
         document.body.innerHTML = "";
