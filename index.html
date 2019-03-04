@@ -1,214 +1,175 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <link rel="stylesheet" href="https://membership.usetada.com/bootstrap/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
-  <!-- Add to home screen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Template PWA">
-  <link rel="apple-touch-startup-image" href="SplashScreen.png">
-  <link rel="apple-touch-startup-image" href="SplashScreen_640.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-  <link rel="apple-touch-startup-image" href="SplashScreen_750.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-  <!-- Windows -->
-  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
-  <meta name="msapplication-TileColor" content="#2F3BA2">
-  <style>
-    html {
-      height: 100%;
-      width: 100%;
-    }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
 
-    body {
-      padding: 0rem 0 1.6rem;
-      overflow-x: hidden;
-      flex: 1;
-      max-width: 48rem;
-      margin: 0 auto;
-      background-color: #2F343A;
-      height: 100%;
-    }
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
-    .itemName {
-      /* margin-top: 100px; */
-      font-size: 50px;
-      color: white;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 100;
-      margin: 10% 0;
-    }
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
 
-    .item .startHere {
-      width: 100%;
-    }
+button:hover {
+  opacity: 0.8;
+}
 
-    .numberCircle {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      text-align: center;
-      font-size: 32px;
-      border: 2px solid #ffffff;
-      background-color: #ffffff;
-      font-size: 50pt;
-      color: black;
-    }
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
 
-    .container {
-      /* position: relative; */
-      /* z-index: 1; */
-      color: white;
-      margin-top: 80px;
-      /* height: 100%; */
-    }
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
 
-    .startHere {
-      width: 100%;
-      position: fixed;
-      z-index: 1;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-      top: 90%;
-      color: #ffffff;
-      left: 0;
-    }
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
 
-    .cardName {
-      position: absolute;
-      top: 80%;
-      left: 25%;
-    }
+.container {
+  padding: 16px;
+}
 
-    #cardIcon {
-      width: 150px;
-      height: 150px;
-      border-radius: 30px;
-      position: absolute;
-    }
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
 
-    #appLink {
-      text-decoration: none;
-    }
-  </style>
-  <script>
-    function getUrlVars() {
-      var vars = {};
-      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-        vars[key] = value;
-      });
-      return vars;
-    }
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
 
-    function getUrlParam(parameter, defaultvalue) {
-      var urlparameter = defaultvalue;
-      if (window.location.href.indexOf(parameter) > -1) {
-        urlparameter = getUrlVars()[parameter];
-      }
-      return urlparameter;
-    }
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
 
-    function setAppIcon(appIcon) {
-      var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-      link.rel = 'apple-touch-icon';
-      link.href = appIcon;
-      document.getElementsByTagName('head')[0].appendChild(link);
-    }
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
 
-    function isRunningStandalone() {
-      return (window.matchMedia('(display-mode: standalone)').matches);
-    }
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
 
-    window.onload = function () {
-      
-      var cardNumber = getUrlParam('cardNumber', 'Empty');
-      var walletID = getUrlParam('walletID', 'Empty');
-      var iconURL = getUrlParam('cardIcon', 'Empty');
-      var cardName = getUrlParam('cardName', 'Empty');
-      var isProduction = getUrlParam('isProduction', 'true');
-      var deepLinkURL = (isProduction == 'true') ? 'tadadeeplink' : 'tadadeeplinkstaging';
-      deepLinkURL += '://app.tada.id/card/' + cardNumber + '/' + walletID;
-      document.getElementsByTagName("META")[2].content = unescape(cardName);
-      setAppIcon(iconURL);
-      document.getElementById('cardIcon').src = iconURL;
-      document.getElementById('cardName').innerHTML = unescape(cardName);
-      document.getElementById('brand').innerHTML = unescape(cardName);
-      //document.getElementById('appLink').href = deepLinkURL;
-      if (window.navigator.standalone) {
-        document.body.innerHTML = "";
-        document.body.style.backgroundColor = "#32373C";
-        window.location = deepLinkURL;
-      }
-    }
-  </script>
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
 </head>
-
 <body>
-  <div class="container">
-    <div class="row d-flex" style="color: #ffffff;">
-      <div class="col-8 px-2 text-center">
-        <img src="assets/icon-blur.png" style="max-height: 100%; max-width: 100%;">
 
-      </div>
-      <div class="col-4">
-        <div class="d-flex flex-column">
-          <img src="assets/icon-share@2x.png" alt="" id="cardIcon">
-          <p id="cardName" class="cardName"></p>
-        </div>
+<h2>Modal Login Form</h2>
 
-      </div>
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
-
-
-    </div>
-    <div class="row">
-      <div class="col-12 px-2 text-center itemName">
-        <p class="text-center">Add <b id="brand"></b> to your</p>
-        <p class="text-center">Homescreen</span>
-      </div>
-    </div>
-    <div class="row py-5">
-      <div class="col-12 px-2">
-        <div class="row">
-          <div class="col-3">
-            <div class="numberCircle">
-              1
-            </div>
-          </div>
-          <div class="col-9">
-            <span style="font-size:40px;"><b>Share Button</b></span> <img src="assets/icon-share@2x.png" style="width:17%;margin-left: 20px; margin-top: -40px;"
-              alt="share" srcset=""> <br>
-            <span style="font-size:30px;">Tap "Share Button" from your browser</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row py-5">
-      <div class="col-12 px-2">
-        <div class="row">
-          <div class="col-3">
-            <div class="numberCircle">
-              2
-            </div>
-          </div>
-          <div class="col-9">
-            <span style="font-size:40px;"><b>Add to Home Button</b></span>
-            <img src="assets/icon-add@2x.png" style="width:14%; margin-left: 20px; margin-top: -40px;" alt="" srcset="">
-            <br>
-            <span style="font-size:30px;">Tap "Add to Home Screen" button from the menu alert that appears</span>
-          </div>
-        </div>
-      </div>
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="img_avatar2.png" alt="Avatar" class="avatar">
     </div>
 
-  </div>
-  <div class="item startHere">
-    <span style="font-size:40px">Start Here !</span>
-    <br>
-    <img src="assets/icon-arrow-down@2x.png" width="50" height="50" alt="" srcset="">
-  </div>
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 
 </body>
-
 </html>
