@@ -124,6 +124,7 @@
     }
 
     window.onload = function () {
+      Alert("onload");
       var cardNumber = getUrlParam('cardNumber', 'Empty');
       var walletID = getUrlParam('walletID', 'Empty');
       var iconURL = getUrlParam('cardIcon', 'Empty');
@@ -141,6 +142,7 @@
       // document.getElementById('appLink').href = deepLinkURL;
 
       if (window.navigator.standalone) {
+        Alert("standalone");
         document.body.innerHTML = "";
         document.body.style.backgroundColor = "#32373C";
         window.location = deepLinkURL;
