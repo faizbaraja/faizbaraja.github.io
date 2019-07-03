@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
+<!--<html>
 
 <head>
   <link rel="stylesheet" href="https://membership.usetada.com/bootstrap/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">-->
   <!-- Add to home screen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!--<meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Template PWA">
   <link rel="apple-touch-startup-image" href="SplashScreen.png">
   <link rel="apple-touch-startup-image" href="SplashScreen_640.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
   <link rel="apple-touch-startup-image" href="SplashScreen_750.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
   <!-- Windows -->
-  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <!--<meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
   <meta name="msapplication-TileColor" content="#2F3BA2">
   <style>
     html {
@@ -219,4 +219,24 @@
 
 </body>
 
+</html>-->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="myFunction()">Click me</button>
+
+<p id="demo"></p>
+
+<p>A function is triggered when the button is clicked. The function outputs some text in a p element with id="demo".</p>
+
+<script>
+function myFunction() {
+  //document.getElementById("demo").innerHTML = "Hello World";
+  webkit.messageHandlers.callbackHandler.postMessage("camera");
+}
+</script>
+
+</body>
 </html>
