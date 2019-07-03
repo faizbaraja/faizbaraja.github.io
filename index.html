@@ -235,12 +235,12 @@
 <script>
 function myFunction() {
   //document.getElementById("demo").innerHTML = "Hello World";
-  webkit.messageHandlers.nativeAppAdapter.registerUaNamedUser("camera");
+  webkit.messageHandlers.nativeAppAdapter.postMessage("camera");
 }
 
 function myFunctionSignOut() {
   //document.getElementById("demo").innerHTML = "Hello World";
-  webkit.messageHandlers.nativeAppAdapter.removeUaNamedUser();
+  webkit.messageHandlers.nativeAppAdapter.postMessage();
 }
   
 </script>
