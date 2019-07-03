@@ -235,12 +235,12 @@
 <script>
 function myFunction() {
   //document.getElementById("demo").innerHTML = "Hello World";
-  webkit.messageHandlers.callbackHandler.postMessage("camera");
+  webkit.messageHandlers.signIn.postMessage("camera");
 }
 
 function myFunctionSignOut() {
   //document.getElementById("demo").innerHTML = "Hello World";
-  webkit.messageHandlers.callbackHandler.postMessage("");
+  webkit.messageHandlers.signOut.postMessage("");
 }
   
 </script>
