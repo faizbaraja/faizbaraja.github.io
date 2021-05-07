@@ -1,11 +1,17 @@
 {
-  "applinks": {
-    "apps": [],
-    "details": [
-    {
-      "appID": "54SVVWQV48.id.co.giftcard.app.holdr.staging",
-      "paths": ["*"]
-    }
-    ]
-  }
+   "applinks":{
+      "apps":[
+         
+      ],
+      "details":[
+         {
+            "appID":"84L39YW99R.com.kumparan.ic",
+            "paths":[
+               "/login/*",
+               "/reset-password/*",
+               "*"
+            ]
+         }
+      ]
+   }
 }
