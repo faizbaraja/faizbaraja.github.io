@@ -10,7 +10,8 @@
                "/login/*",
                "*/reset-password",
                "/docs/*",
-               "/*"
+               "/*",
+               "*"
             ]
          }
       ]
