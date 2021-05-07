@@ -6,11 +6,7 @@
       "details":[
          {
             "appID":"84L39YW99R.com.kumparan.ic",
-            "paths":[
-               "/login/*",
-               "/reset-password/*",
-               "*"
-            ]
+            "paths": ["*"]
          }
       ]
    }
